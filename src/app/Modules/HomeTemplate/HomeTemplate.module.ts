@@ -11,7 +11,11 @@ import { RouterModule,Routes } from '@angular/router';
 import { HeaderHomeTemplateComponent } from './_component/HeaderHome.component';
 
 const homeRoutes:Routes = [
-    {path:'',component: HomeTemplateComponent}
+    {path:'',component: HomeTemplateComponent,children:[
+        {path:'',component:HomePageComponent},
+        {path:'about',component:AboutComponent},
+        {path:'contact',component:ContactComponent},
+    ]}
 ] 
 
 

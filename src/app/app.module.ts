@@ -24,9 +24,11 @@ registerLocaleData(en);
 //Định nghĩa route cho angular 
 import { RouterModule, Routes } from '@angular/router';
 import { HomeTemplateModule } from './Modules/HomeTemplate/HomeTemplate.module';
+import { UserModule } from './Modules/UserModule/UserModule.module';
 
 const appRoutes: Routes = [
   { path: 'home', loadChildren: () => HomeTemplateModule },
+  { path: 'user', loadChildren: () => UserModule },
   { path: '', loadChildren: () => HomeTemplateModule },
 ]
 
