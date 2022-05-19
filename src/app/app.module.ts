@@ -44,10 +44,10 @@ const appRoutes: Routes = [
     DirectiveModule,
     PropsModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule,//module gọi api servic
     BrowserAnimationsModule,
     DemoUIControlModule,
-    RouterModule.forRoot(appRoutes) //Chỉ import được module
+    RouterModule.forRoot(appRoutes), //Chỉ import được module
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }], //Là nới gắn các service sử dụng cho module này
   bootstrap: [AppComponent] //Là các thẻ có thể sử dụng trong index.html

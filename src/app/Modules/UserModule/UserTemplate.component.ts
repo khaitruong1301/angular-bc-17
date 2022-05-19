@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
             <div class="w-50" style="height:100vh">
                 <img src="https://picsum.photos/2000" alt="..." class="h-100" />
             </div>
-            <div class="out-let">
+            <div class="out-let w-50" style="min-height:100vh;">
                 <router-outlet></router-outlet>
             </div>
         </div>

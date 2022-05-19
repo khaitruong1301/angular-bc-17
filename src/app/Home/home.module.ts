@@ -12,6 +12,7 @@ import { NavigationHomeComponent } from './NavigationHome/NavigationHome.compone
     declarations: [HomeComponent,HeaderHomeComponent,NavigationHomeComponent,ContentHomeComponent,FooterHomeComponent], //Là các component được quản lý bởi module này
     imports: [], //Các module khác sử dụng cho module này (Các hàm thư viên ... để code được trong các file component)
     exports: [HomeComponent],//Nơi đóng gói xuất ra các chức năng mà module này cho phép 
+    // providers:[]
 
 })
 export class HomeModule { } //Tên module
