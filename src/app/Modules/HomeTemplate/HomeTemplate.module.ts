@@ -11,13 +11,18 @@ import { RouterModule,Routes } from '@angular/router';
 import { HeaderHomeTemplateComponent } from './_component/HeaderHome.component';
 import { DetailComponent } from './pages/Detail/Detail.component';
 import { DetailQueryParamsComponent } from './pages/DetailQueryParams/DetailQueryParams.component';
+import { FormDemoComponent } from './pages/FormDemo/FormDemo.component';
+import { isCommentGuard } from 'src/app/_core/services/guards/isComment.guard';
+import { DemoPipeComponent } from './pages/DemoPipe/DemoPipe.component';
 
 const homeRoutes:Routes = [
     {path:'',component: HomeTemplateComponent,children:[
         {path:'',component:HomePageComponent},
         {path:'about',component:AboutComponent},
-        {path:'contact',component:ContactComponent},
+        {path:'contact',component:ContactComponent,canDeactivate:[isCommentGuard]},
+        {path:'formdemo',component:FormDemoComponent},
         {path:'detail/:id',component:DetailComponent},
+        {path:'pipe',component:DemoPipeComponent},
         {path:'detailparams',component:DetailQueryParamsComponent},
     ]}
 ] 
@@ -25,7 +30,7 @@ const homeRoutes:Routes = [
 
 
 @NgModule({
-    declarations: [AboutComponent,ContactComponent,HomePageComponent,HomeTemplateComponent,HeaderHomeTemplateComponent,DetailComponent],
+    declarations: [AboutComponent,ContactComponent,HomePageComponent,HomeTemplateComponent,HeaderHomeTemplateComponent,DetailComponent,FormDemoComponent],
     imports: [FormsModule,CommonModule,RouterModule.forChild(homeRoutes)],
     exports: [],
 })

@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
     template: `
         <app-header-home-template></app-header-home-template>
         <router-outlet></router-outlet>
-        Home template
     `
 })
 

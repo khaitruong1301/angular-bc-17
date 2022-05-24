@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NguoiDungService } from 'src/app/_core/services/nguoiDung.service';
 
 @Component({
     selector: 'app-login',
@@ -55,10 +57,27 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
     userLogin:IUserLogin = {taiKhoan:'',matKhau:''};
     @ViewChild('frmLogin') tagForm!:NgForm;
-    constructor() { }
+    constructor(private nguoiDungService:NguoiDungService,private router:Router) { }
     ngOnInit() { }
     dangNhap(values:NgForm) {
-        console.log('values',values);
+        // console.log('values',values);
+
+        this.nguoiDungService.dangNhap(values).subscribe({
+            next: result => {
+                //Thành công lưu vào localstorage
+                localStorage.setItem('userLogin',JSON.stringify(result.content));
+                localStorage.setItem('accessToken',result.content.accessToken);
+                alert('Đăng nhập thành công!');
+                //Chuyển hướng về trang chủ 
+                this.router.navigate(['/']);
+
+            },
+            error: (err) =>{
+                console.log({err})
+                alert('Đăng nhập thất bại!');
+
+            }
+        });
     }
     setValues() {
         this.tagForm.setValue({

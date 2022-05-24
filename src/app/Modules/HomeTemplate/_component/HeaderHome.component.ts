@@ -14,6 +14,12 @@ import { Component, OnInit } from '@angular/core';
                         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" routerLink="/formdemo">FormDemo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/pipe">pipe</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" routerLink="/about">About</a>
                     </li>
                     <li class="nav-item">

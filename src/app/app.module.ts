@@ -16,7 +16,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoUIControlModule } from './Modules/DemoUIControl/DemoUIControl.module';
 
@@ -25,11 +25,13 @@ registerLocaleData(en);
 import { RouterModule, Routes } from '@angular/router';
 import { HomeTemplateModule } from './Modules/HomeTemplate/HomeTemplate.module';
 import { UserModule } from './Modules/UserModule/UserModule.module';
+import { httpApiInterceptor } from './_core/services/auth.interceptor';
 
 const appRoutes: Routes = [
   { path: 'home', loadChildren: () => HomeTemplateModule },
   { path: 'user', loadChildren: () => UserModule },
   { path: '', loadChildren: () => HomeTemplateModule },
+  { path:'**',redirectTo:''}
 ]
 
 
@@ -49,7 +51,12 @@ const appRoutes: Routes = [
     DemoUIControlModule,
     RouterModule.forRoot(appRoutes), //Chỉ import được module
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }], //Là nới gắn các service sử dụng cho module này
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    {provide :HTTP_INTERCEPTORS,useClass:httpApiInterceptor,multi:true}
+
+  
+  ], //Là nới gắn các service sử dụng cho module này
   bootstrap: [AppComponent] //Là các thẻ có thể sử dụng trong index.html
 })
 export class AppModule { }
