@@ -14,6 +14,9 @@ import { DetailQueryParamsComponent } from './pages/DetailQueryParams/DetailQuer
 import { FormDemoComponent } from './pages/FormDemo/FormDemo.component';
 import { isCommentGuard } from 'src/app/_core/services/guards/isComment.guard';
 import { DemoPipeComponent } from './pages/DemoPipe/DemoPipe.component';
+import { PipesModule } from 'src/app/_core/common/baseModule/Pipes/Pipe.module';
+import { LifecycleComponent } from './pages/Lifecycle/Lifecycle.component';
+import { ChildComponent } from './pages/Lifecycle/Child.component';
 
 const homeRoutes:Routes = [
     {path:'',component: HomeTemplateComponent,children:[
@@ -24,14 +27,15 @@ const homeRoutes:Routes = [
         {path:'detail/:id',component:DetailComponent},
         {path:'pipe',component:DemoPipeComponent},
         {path:'detailparams',component:DetailQueryParamsComponent},
+        {path:'lifecycle',component:LifecycleComponent},
     ]}
 ] 
 
 
 
 @NgModule({
-    declarations: [AboutComponent,ContactComponent,HomePageComponent,HomeTemplateComponent,HeaderHomeTemplateComponent,DetailComponent,FormDemoComponent],
-    imports: [FormsModule,CommonModule,RouterModule.forChild(homeRoutes)],
+    declarations: [AboutComponent,ContactComponent,HomePageComponent,HomeTemplateComponent,HeaderHomeTemplateComponent,DetailComponent,FormDemoComponent,DemoPipeComponent,LifecycleComponent,ChildComponent],
+    imports: [FormsModule,CommonModule,RouterModule.forChild(homeRoutes),PipesModule],
     exports: [],
 })
 export class HomeTemplateModule { }

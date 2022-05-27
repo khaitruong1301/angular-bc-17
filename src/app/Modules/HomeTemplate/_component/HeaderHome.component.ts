@@ -20,6 +20,9 @@ import { Component, OnInit } from '@angular/core';
                         <a class="nav-link" routerLink="/pipe">pipe</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" routerLink="/lifecycle">lifecycle</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" routerLink="/about">About</a>
                     </li>
                     <li class="nav-item">

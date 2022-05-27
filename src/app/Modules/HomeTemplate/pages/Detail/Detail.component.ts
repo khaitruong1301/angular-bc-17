@@ -1,6 +1,7 @@
 //a-component-inline
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-detail',
@@ -17,18 +18,26 @@ import { ActivatedRoute } from '@angular/router';
     `
 })
 
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit,OnDestroy {
     id:number = 0;
+
+    subParam!: Subscription;
+
     //Đối tượng ativatedRoute
     constructor(private atvRoute:ActivatedRoute) { }
 
     ngOnInit() { 
         // //snapshot lấy param từ trang khác get qua 
         // this.id = this.atvRoute.snapshot.params['id'];
-        this.atvRoute.params.subscribe((params) => {
+      this.subParam =   this.atvRoute.params.subscribe((params) => {
             // this.id = params['id'];
-            console.log(params)
+            console.log(params);
         })
 
+    }
+    ngOnDestroy(): void {
+        if(this.subParam) {
+            this.subParam.unsubscribe();
+        }
     }
 }
